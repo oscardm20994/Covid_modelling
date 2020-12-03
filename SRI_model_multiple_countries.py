@@ -139,10 +139,11 @@ split_betas = False
 R0 =  float(sys.argv[4])
 beta0 = gamma*R0
 
-#run optimisation which loops over parameter space and stores the RMS value fit to the data.
+#run optimisation which loops over parameter space and stores the RMS value fit to the data. RMS grid is a 2d matrix for range of values of
+#beta_drops (lockdown severity) and pia (asymptomatic proportion)
 pias, beta_drops, RMS = pia_and_beta_vs_symp(beta0, 1, 0.005, 0.001, beta0, GB_new_cases, 'decay')
 
-#plotting
+#plotting RMS grid and best fit curves
 fig = plt.figure()
 cs = plt.contourf( beta0 - beta_drops, pias, RMS, levels = np.linspace(np.min(RMS),np.max(RMS),20), cmap = 'Blues')
 min_pia = pias[np.where(RMS == np.min(RMS))[0]]
@@ -267,4 +268,4 @@ plt.legend(loc = 2)
 fig.savefig('./covid_optimisations/figures_for_paper/bootstrap_RMS_difs' + code + '.png', dpi = 150)
 plt.show()
 
-print np.arange(0,100.001,0.001)[percentile_index]
+sys.exit()
