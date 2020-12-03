@@ -2,11 +2,8 @@
 # coding: utf-8
 
 
-import iris
-import iris.coord_categorisation as coord_cat 
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
-import iris.quickplot as qplt
 import matplotlib
 import numpy as np
 import matplotlib.cm as cm
@@ -19,12 +16,11 @@ from scipy import stats
 from collections import Counter
 from scipy.fftpack import fft, fftfreq
 import sys
-import matplotlib.animation as animation
 import csv
 import pandas as pd
 from datetime import datetime
 
-#read in necessary constants
+#read in necessary variables: country code to calulate fit for, date of countries lockdown and population
 #country code
 code = sys.argv[1]
 #string of lockdown date
@@ -33,10 +29,11 @@ lockdown_date = sys.argv[2]
 N = float(sys.argv[3])
 
 
-# Simplest way to read csv (which doesn't work for multi-level columns)
+# read in daily covid case data from csv file using panda datafram
 df = pd.read_csv('total-cases-covid-19.csv')
 
-#isolate country that we want, work out when the 1st case was.
+#isolate country that we want, here we call this variable GB as the UK was the test case
+#but this can be any country entered as input. Work out when the 1st case was.
 GB = df.loc[df['Code'] == code].values[:]
 cumulative = GB[:,3]/N
 
@@ -51,7 +48,7 @@ GB_new_cases = cumulative[1:] - cumulative[0:-1]
 #convert the lockdown date into an index from the first case date
 N_lockdown = np.where(GB[:,2] == lockdown_date)[0][0]
 
-
+#quick plot of the new cases per day to check data looks reasonable.
 fig = plt.figure(figsize = (7,5), dpi = 100)
 plt.plot(np.arange(first_index, first_index + len(GB_new_cases)), GB_new_cases*N)
 plt.ylabel('new cases')
@@ -66,7 +63,7 @@ fig.savefig('./covid_optimisations/countries/'+code+'daily_new_cases.png', dpi =
 
 ##functions
 ## function to perform 1 timestep of the SRI model given beta, gamma, N
-## and values of populations from previous timestep, returns changes in each probability of population (S, R, I)
+## and values of populations from previous timestep, returns changes in each probability of population (S = succeptable, R = recovered, I = infected)
 def Timestep(N, beta, gamma, S_m, R_m, I_m):
     deltaS = -1 * beta * I_m * S_m/N
     deltaR = gamma * I_m
@@ -75,8 +72,11 @@ def Timestep(N, beta, gamma, S_m, R_m, I_m):
     return deltaS, deltaR, deltaI
 
 
-#modified version of the run_sim function used to a step_function beta
-def run_sim(N, beta0, gamma, N_days, s0, pia, false_symp, beta_step, N_lockdown, mode):
+#function to run a single simulation of the SIR model. Inputs are:
+#N = population, beta0= the transmission coeficiant pre lockdown, gamma = recovery parameter, N_days = time the simulation is run for (days),
+#s0 = initial number of infectous cases, pia = proportion of asymptomatic - symptomatic cases, beta_step = reduction in beta brought about by lockdown, 
+#N_lockdown = day of lockdown start, mode = optional parameter to select how the transimision rate is reduced: stepped down or decayed over time. 
+def run_sim(N, beta0, gamma, N_days, s0, pia, beta_step, N_lockdown, mode):
     #initial vals for populations
     R = np.zeros([1])
     symp0 = s0
@@ -139,7 +139,7 @@ split_betas = False
 R0 =  float(sys.argv[4])
 beta0 = gamma*R0
 
-#run optimisation
+#run optimisation which loops over parameter space and stores the RMS value fit to the data.
 pias, beta_drops, RMS = pia_and_beta_vs_symp(beta0, 1, 0.005, 0.001, beta0, GB_new_cases, 'decay')
 
 #plotting
