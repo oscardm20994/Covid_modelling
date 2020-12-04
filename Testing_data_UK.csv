@@ -1,0 +1,25 @@
+Week,Total number of people tested,Number of people tested in pillar 1,Number of people tested in pillar 2
+Week 1: 30/01/20 - 05/02/20,427,427, -   
+Week 2: 06/02/20 - 12/02/20,1713,1713, -   
+Week 3: 13/02/20 - 19/02/20,2756,2756, -   
+Week 4: 20/02/20 - 26/02/20,1980,1980, -   
+Week 5 : 27/02/20 - 04/03/20,9728,9728, -   
+Week 6 : 05/03/20 - 11/03/20,9998,9998, -   
+Week 7 : 12/03/20 - 18/03/20,25794,25794, -   
+Week 8 : 19/03/20 - 25/03/20,38550,38550, -   
+Week 9 : 26/03/20 - 01/04/20,49775,49725,50
+Week 10 : 02/04/20 - 08/04/20,63193,62672,521
+Week 11 : 09/04/20 - 15/04/20,70422,67233,3189
+Week 12 : 16/04/20 - 22/04/20,100013,76920,23093
+Week 13 : 23/04/20 - 29/04/20,179460,90327,89133
+Week 14 : 30/04/20 - 06/05/20,338699,142073,196626
+Week 15 : 07/05/20 - 13/05/20,348999,117604,231395
+Week 16 : 14/05/20 - 20/05/20,393640,119892,273748
+Week 17 : 21/05/20 - 27/05/20,355167,109991,245176
+Total from 30th January to 27th May,1990314,927383,1062931
+,,,
+Note: People tested refers to people who have newly been tested for COVID-19 and does not include people who have had more than one test.,,,
+Data has been de-duplicated so people who have multiple tests in both pillars 1 and 2 only appear once.,,,
+"If a person is tested under both pillar 1 and pillar 2, then only the pillar they were first tested under is counted.",,,
+,,,
+This data is not directly comparable with data in the NHS test and trace time series due to difference in the dates at which the data was extracted.,,,
