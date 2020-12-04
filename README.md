@@ -1,8 +1,8 @@
 # Covid_modelling
 Repository of python code used to model the spread of the COVID-19 virus.
 
-# Modelling Approach
-At each point in time the population of a country is made up of three distinct groups: those who are currently infected ($I_t$); those who are susceptible ($S_t$) and those who have recovered ($R_t$). At each point in time only some fraction of those infected are tested and show a positive result. We denote the number of people infected at time $t$ by $I_t$. We distinguish within this group between those who have tested positive (denoted $I_{st}$) and those who were not tested or incorrectly tested negative ($I_{at}$)  such that $I_t=I_{st}+I_{at}$. (We use the subscripts s and a for these groups because those who were tested were disproportionately those with symptoms while those who were infected but not tested were likely to have had a higher proportion of the asymptomatic). The evolution of $S_t$, $I_t$ and $R_t$ in discrete time is given by the dynamic system:
+## Modelling Approach
+At each point in time the population of a country is made up of three distinct groups: those who are currently infected ($I_t$); those who are susceptible ($S_t$) and those who have recovered ($$"R_t"$$). At each point in time only some fraction of those infected are tested and show a positive result. We denote the number of people infected at time $t$ by $I_t$. We distinguish within this group between those who have tested positive (denoted $I_{st}$) and those who were not tested or incorrectly tested negative ($I_{at}$)  such that $I_t=I_{st}+I_{at}$. (We use the subscripts s and a for these groups because those who were tested were disproportionately those with symptoms while those who were infected but not tested were likely to have had a higher proportion of the asymptomatic). The evolution of $S_t$, $I_t$ and $R_t$ in discrete time is given by the dynamic system:
 
 <img src="https://render.githubusercontent.com/render/math?math=\Delta S_t = - \beta_t I_{t-1}\frac{S_{t-1}}{N}">
 
