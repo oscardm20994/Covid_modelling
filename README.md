@@ -26,4 +26,13 @@ New cases are the sum of the change in the number of outstanding cases plus the 
 
 <img src="https://render.githubusercontent.com/render/math?math=y_{st} = (1 - \pi_a) (\Delta I_t + \gamma I_{t-1}) = (1 - \pi_a) \bigg(\beta_t I_{t-1} \frac{S_{t-1}}{N}\bigg).">
 
+## Files
 
+- Testing_data_UK.csv - Timeseries data on number of tests conducted.
+- covid_data_JH.csv - Timeseries data on COVID-19 cases seperated by country.
+- SRI_model_multiple_countries.py - SCript contating model and optimisation code designed to run optimisation for data on any country. Run using commande python SRI_model_multiple_countries.py <<3 letter country code>> <<numeric date of countries lockdown>> <<population of country>> . The script produces RMS grids and best fit plots as well as significance testing for minima in RMS.
+- SRI_model.ipynb - Jupyter notebook version of model and plotting scripts
+- SRI_model_variable_pi.ipynb - version of the SRI that allows the asymptomatic fraction, &pi, vary with time.
+  
+  
+ 
