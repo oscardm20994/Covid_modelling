@@ -50,7 +50,9 @@ For given values of &gamma;, &beta;<sub>0</sub> and &lambda we search for the va
 - SRI_model_variable_pi.ipynb - version of the SRI that allows the asymptomatic fraction, &pi;<sub>a</sub>, vary with time.
 
 ## Sample Output
+GBRgamma_=_0.083_RMS_R0_=_2.95latest_data.png - RMS grid for optimisation of the model on UK data. Red dot indicates the region of the grid giving the best fit.
 
-  
+GBRgamma_=_0.083_best_fit_R0_=_2.95latest_data.png - Simulation of the model using the best fit parameters calculated in the RMS grid. We can see the model does a pretty good job simulating the real new case data and that the estimated &pi;<sub>a</sub> is very large. This is the main result of the work this code is used for!
+
   
  
