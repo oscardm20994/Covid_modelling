@@ -33,12 +33,9 @@ To implement the estimation of the model we need to make assumptions about the t
 We assume that after the lockdown date there is a lag until the value of &beta;<sub>t</sub> starts to change from &beta<sub>0</sub>. The lag is between the lockdown measures starting and the impact on the numbers testing positive for the virus. That lag reflects several distinct factors: it must include the lag in the impact on new infections, the lag before symptoms show, the lag before testing the symptomatic and finally the lag before results are known and recorded in the daily measure. We set the overall lag at 14 days, but also assess sensitivity of results to shorter lags in part because social distancing was already happening just before lockdown. After this lag, &beta; decays exponentially towards a value of &beta<sub>L</sub>. The time path for &beta;<sub>t</sub> can be expressed as
 
 
-<img src="https://render.githubusercontent.com/render/math?math=\beta_t=\left\{
-  \begin{array}{@{}ll@{}}
-    \beta_0, & \text{if}\ t \leq
-    t^* \\
-    \beta_0 - (\beta_0 - \beta_L)(1 - e^{-(t-t^*)\lambda}) & \text{if } t > t^*,
-  \end{array}\right.">
+<img src="https://render.githubusercontent.com/render/math?math=\beta_t= \beta_0 \text{if}\ t \leq t^*">
+
+<img src="https://render.githubusercontent.com/render/math?math=\beta_t= \beta_0 - (\beta_0 - \beta_L)(1 - e^{-(t-t^*)\lambda}) \text{if } t > t^*">
   
 where t<sup>*</sup> is the lockdown time plus the 14 day lag period and &lambda; is the speed of adjustment in &beta; after lockdown measures begin to take effect. We assume that once the lockdown does begin to affect numbers testing positive it quite quickly reaches its full effectiveness, bringing the transmission rate down so that half of its long run impact on &beta; comes through in 3 days, implying that &lambda; = 0.231.
 
